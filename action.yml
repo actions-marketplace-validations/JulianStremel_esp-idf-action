@@ -1,4 +1,4 @@
-name: 'ESP-IDF Build Project Cachecd'
+name: 'ESP-IDF Build Project Cached'
 author: 'Julian Stremel'
 description: 'GitHub action to install ESP-IDF tools for building esp-idf projects based on rmshub / esp-idf-action'
 
