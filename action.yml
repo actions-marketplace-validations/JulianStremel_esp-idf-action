@@ -27,12 +27,16 @@ inputs:
     description: 'Sets the target (chip) for which the project is built'
     required: false
     default: 'esp32'
+  esp_idf_cache_build:
+    description: 'Whether to cache the build folder'
+    required: false
+    default: true
 
 runs:
   using: "composite"
   steps:
     - name: Checkout the code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         fetch-depth: ${{ inputs.fetch-depth }}
         token: ${{ inputs.token }}
@@ -45,6 +49,9 @@ runs:
         path: |
           ~/esp/esp-idf
           ~/.espressif
+          if ${{ inputs.esp_idf_cache_build }}
+          then
+            ~/${{github.event.repository.name }}/build
           
         key: ${{ runner.os }}-esp-${{ inputs.esp_idf_version }}
 
