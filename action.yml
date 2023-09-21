@@ -1,6 +1,6 @@
 name: 'ESP-IDF Project Build'
-author: 'rmshub'
-description: 'GitHub action to install ESP-IDF tools for building esp-idf projects'
+author: 'Julian Stremel'
+description: 'GitHub action to install ESP-IDF tools for building esp-idf projects based on rmshub / esp-idf-action'
 
 branding:
   icon: 'box'
@@ -22,7 +22,7 @@ inputs:
   esp_idf_version:
     description: 'ESP-IDF version'
     required: false
-    default: 'v4.3'
+    default: 'v5.0.1' #bugfix version of V5.0
   esp_idf_target:
     description: 'Sets the target (chip) for which the project is built'
     required: false
@@ -45,6 +45,7 @@ runs:
         path: |
           ~/esp/esp-idf
           ~/.espressif
+          
         key: ${{ runner.os }}-esp-${{ inputs.esp_idf_version }}
 
     - run: |
