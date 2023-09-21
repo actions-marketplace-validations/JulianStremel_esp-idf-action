@@ -32,6 +32,7 @@ inputs:
     required: false
     default: true
 
+
 runs:
   using: "composite"
   steps:
@@ -49,9 +50,7 @@ runs:
         path: |
           ~/esp/esp-idf
           ~/.espressif
-          if ${{ inputs.esp_idf_cache_build }}
-          then
-            ~/${{github.event.repository.name }}/build
+          ~/app/${{ github.repository }}/build
           
         key: ${{ runner.os }}-esp-${{ inputs.esp_idf_version }}
 
